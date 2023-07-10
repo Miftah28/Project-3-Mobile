@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project3mobile/view/dashboard_screen.dart';
-import 'package:project3mobile/view/journal_screen.dart';
+import 'package:project3mobile/view/attendance/dashboard_screen.dart';
+import 'package:project3mobile/view/journal/journal_screen.dart';
 import 'package:project3mobile/view/login_screen.dart';
-import 'package:project3mobile/view/report_screen.dart';
-import 'package:project3mobile/view/logout.dart';
+import 'package:project3mobile/view/report/report_screen.dart';
 import 'package:project3mobile/view/profile.dart';
 
 class Navigation extends StatefulWidget {
@@ -52,7 +51,7 @@ class _NavigationState extends State<Navigation> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_rounded),
-            label: 'Report',
+            label: 'profie',
           ),
         ],
         backgroundColor: Colors.orange,

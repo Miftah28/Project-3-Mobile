@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.project3mobile">
-   <application
-        android:label="absensi PKL"
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:label="Absensi SMK PKL"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -30,5 +31,6 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        
     </application>
 </manifest>

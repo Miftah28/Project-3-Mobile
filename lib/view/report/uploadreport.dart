@@ -77,7 +77,9 @@ class _PDFUploadScreenState extends State<PDFUploadScreen> {
         'Authorization': 'Bearer ' + await _token
       };
       var request = http.MultipartRequest(
-          'POST', Uri.parse('http://192.168.1.5:8080/api/report'));
+          // 'POST', Uri.parse('http://192.168.1.5:8080/api/report'));
+          // 'POST', Uri.parse('http://10.0.141.1:8080/api/report'));
+          'POST', Uri.parse('http://pkmsmkteladankertasemaya.com/api/report'));
 
       request.headers.addAll(headres);
       request.fields['description'] = description;

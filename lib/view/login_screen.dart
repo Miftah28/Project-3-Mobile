@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:project3mobile/view/dashboard_screen.dart';
+import 'package:project3mobile/view/attendance/dashboard_screen.dart';
 import 'package:project3mobile/view/model/User.dart';
 import 'package:http/http.dart' as myHttp;
 import 'package:project3mobile/view/navigator.dart';
@@ -56,8 +56,9 @@ class _LoginScreenState extends State<LoginScreen> {
     Map<String, String> body = {"username": username, "password": password};
     final headers = {'Content-Type': 'application/json'};
     var response = await myHttp.post(
+      Uri.parse('http://pkmsmkteladankertasemaya.com/api/login'),
       // Uri.parse('http://10.0.141.1:8080/api/login'),
-      Uri.parse('http://192.168.1.5:8080/api/login'),
+      // Uri.parse('http://192.168.1.5:8080/api/login'),
       body: body,
     );
     if (response.statusCode == 500) {

@@ -32,7 +32,9 @@ class _ProfileState extends State<Profile> {
       'Authorization': 'Bearer ' + await _token
     };
     var response = await Http.get(
-        Uri.parse('http://192.168.1.5:8080/api/profile'),
+        // Uri.parse('http://192.168.1.5:8080/api/profile'),
+        // Uri.parse('http://10.0.141.1:8080/api/profile'),
+        Uri.parse('http://pkmsmkteladankertasemaya.com/api/profile'),
         headers: headres);
     profile = GetProfile.fromJson(json.decode(response.body));
     profile!.data.forEach((element) {
@@ -79,10 +81,13 @@ class _ProfileState extends State<Profile> {
                               height: 40,
                             ),
                             CircleAvatar(
-                                radius: 70,
-                                backgroundImage:
-                                    // AssetImage(profiles[index].photo),
-                                    NetworkImage(profiles[index].photo)),
+                              radius: 70,
+                              backgroundImage:
+                                  // AssetImage(profiles[index].photo),
+                                  NetworkImage(
+                                      "http://pkmsmkteladankertasemaya.com/storage/" +
+                                          profiles[index].photo),
+                            ),
                             const SizedBox(
                               height: 20,
                             ),
@@ -193,8 +198,10 @@ class _ProfileState extends State<Profile> {
                               onPressed: () {
                                 _logout(context);
                               },
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.red,
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.red),
                               ),
                             ),
                           ],

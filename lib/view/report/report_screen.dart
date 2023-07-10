@@ -36,10 +36,11 @@ class _ReportScreenState extends State<ReportScreen> {
       'Authorization': 'Bearer ' + await _token
     };
 
-    var response = await Http.get(
-        // Uri.parse('http://10.0.141.1:8080/api/get-presensi'),
-        Uri.parse('http://192.168.1.5:8080/api/report'),
-        headers: headres);
+    var response =
+        await Http.get(Uri.parse('http://pkmsmkteladankertasemaya.com/api/report'),
+        // await Http.get(Uri.parse('http://10.0.141.1:8080/api/report'),
+            // Uri.parse('http://192.168.1.5:8080/api/report'),
+            headers: headres);
 
     reports = GetReport.fromJson(json.decode(response.body));
     // journals.clear();

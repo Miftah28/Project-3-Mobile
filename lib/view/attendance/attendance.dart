@@ -61,21 +61,25 @@ class _AttendanceState extends State<Attendance> {
     Map<String, String> headers = {'Authorization': 'Bearer ' + await _token};
 
     var response = await Http.post(
+        Uri.parse("http://pkmsmkteladankertasemaya.com/api/save-presensi"),
         // Uri.parse("http://10.0.141.1:8080/api/save-presensi"),
-        Uri.parse("http://192.168.1.5:8080/api/save-presensi"),
+        // Uri.parse("http://192.168.1.5:8080/api/save-presensi"),
         body: body,
         headers: headers);
 
-    savePresensiResponseModel =
-        Saveattendance.fromJson(json.decode(response.body));
-
-    if (savePresensiResponseModel.success) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Sukses simpan Presensi')));
-      Navigator.pop(context);
-    } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Gagal simpan Presensi')));
+    try {
+      savePresensiResponseModel =
+          Saveattendance.fromJson(json.decode(response.body));
+      if (savePresensiResponseModel.success) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Sukses simpan Presensi')));
+        Navigator.pop(context);
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Gagal simpan Presensi')));
+      }
+    } catch (e) {
+      print('Error: $e');
     }
   }
 
@@ -130,13 +134,33 @@ class _AttendanceState extends State<Attendance> {
                     SizedBox(
                       height: 20,
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        savePresensi(currentLocation.latitude,
-                            currentLocation.longitude);
-                      },
-                      child: Text("Presensi"),
-                    )
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            savePresensi(currentLocation.latitude,
+                                currentLocation.longitude);
+                          },
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.green),
+                          ),
+                          child: Text("Masuk"),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            savePresensi(currentLocation.latitude,
+                                currentLocation.longitude);
+                          },
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.red),
+                          ),
+                          child: Text("Pulang"),
+                        )
+                      ],
+                    ),
                   ],
                 ),
               );

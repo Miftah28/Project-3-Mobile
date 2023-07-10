@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project3mobile/utils/global_colors.dart';
-import 'package:project3mobile/view/dashboard_screen.dart';
+import 'package:project3mobile/view/attendance/dashboard_screen.dart';
 import 'package:project3mobile/view/login_screen.dart';
-import 'package:project3mobile/view/attendance.dart';
+import 'package:project3mobile/view/attendance/attendance.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

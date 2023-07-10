@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:project3mobile/view/attendance.dart';
+import 'package:project3mobile/view/attendance/attendance.dart';
 import 'package:project3mobile/view/model/attendances.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as Http;
@@ -36,7 +36,9 @@ Future getData() async {
       'Authorization': 'Bearer ' + await _token
     };
     var response = await Http.get(
-        Uri.parse('http://192.168.1.5:8080/api/get-presensi'),
+        // Uri.parse('http://192.168.1.5:8080/api/get-presensi'),
+        // Uri.parse('http://10.0.141.1:8080/api/get-presensi'),
+        Uri.parse('http://pkmsmkteladankertasemaya.com/api/get-presensi'),
         headers: headres);
     print('data:' + response.body);
     attendance = Attendancess.fromJson(json.decode(response.body));
