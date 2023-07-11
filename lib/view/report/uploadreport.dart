@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:project3mobile/view/navigator.dart';
+import 'package:project3mobile/view/report/report_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PDFUploadScreen extends StatefulWidget {
@@ -14,7 +16,7 @@ class PDFUploadScreen extends StatefulWidget {
 }
 
 class _PDFUploadScreenState extends State<PDFUploadScreen> {
-   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late Future<String> _name, _token;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String txtNama = "";
@@ -77,9 +79,8 @@ class _PDFUploadScreenState extends State<PDFUploadScreen> {
         'Authorization': 'Bearer ' + await _token
       };
       var request = http.MultipartRequest(
-          // 'POST', Uri.parse('http://192.168.1.5:8080/api/report'));
-          // 'POST', Uri.parse('http://10.0.141.1:8080/api/report'));
-          'POST', Uri.parse('http://pkmsmkteladankertasemaya.com/api/report'));
+          // 'POST', Uri.parse('http://192.168.191.249:8080/api/report'));
+      'POST', Uri.parse('http://pkmsmkteladankertasemaya.com/api/report'));
 
       request.headers.addAll(headres);
       request.fields['description'] = description;
@@ -118,7 +119,11 @@ class _PDFUploadScreenState extends State<PDFUploadScreen> {
                   child: const Text('OK'),
                   onPressed: () {
                     //
-                    Navigator.of(context, rootNavigator: false).pop();
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) => Navigation()))
+                        .then((value) {
+                      setState(() {});
+                    });
                   },
                 ),
               ],

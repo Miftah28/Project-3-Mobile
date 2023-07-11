@@ -36,8 +36,7 @@ Future getData() async {
       'Authorization': 'Bearer ' + await _token
     };
     var response = await Http.get(
-        // Uri.parse('http://192.168.1.5:8080/api/get-presensi'),
-        // Uri.parse('http://10.0.141.1:8080/api/get-presensi'),
+        // Uri.parse('http://192.168.191.249:8080/api/get-presensi'),
         Uri.parse('http://pkmsmkteladankertasemaya.com/api/get-presensi'),
         headers: headres);
     print('data:' + response.body);
@@ -91,7 +90,7 @@ Future getData() async {
                       ),
                       Container(
                         width: 400,
-                        decoration: BoxDecoration(color: Colors.orange[800]),
+                        decoration: BoxDecoration(color: Colors.orange),
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Column(

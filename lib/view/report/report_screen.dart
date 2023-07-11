@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:project3mobile/view/report/uploadreport.dart';
 import 'package:project3mobile/view/model/getReport.dart';
@@ -38,13 +39,10 @@ class _ReportScreenState extends State<ReportScreen> {
 
     var response =
         await Http.get(Uri.parse('http://pkmsmkteladankertasemaya.com/api/report'),
-        // await Http.get(Uri.parse('http://10.0.141.1:8080/api/report'),
-            // Uri.parse('http://192.168.1.5:8080/api/report'),
+        // await Http.get(Uri.parse('http://192.168.191.249:8080/api/report'),
             headers: headres);
 
     reports = GetReport.fromJson(json.decode(response.body));
-    // journals.clear();
-    // print(response.body);
     reports!.data.forEach((element) {
       report.add(element);
     });
@@ -95,7 +93,7 @@ class _ReportScreenState extends State<ReportScreen> {
                         itemCount: report.length,
                         itemBuilder: (context, index) => Card(
                           child: ListTile(
-                            leading: Text(report[index].tanggal),
+                            leading: Text(DateFormat('dd-MM-yyyy').format(DateTime.parse(report[index].tanggal))),
                             title: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,

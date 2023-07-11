@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:project3mobile/view/journal/journal_screen.dart';
+import 'package:project3mobile/view/navigator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UploadJournal extends StatefulWidget {
@@ -46,9 +48,8 @@ class _UploadJournalState extends State<UploadJournal> {
         'Authorization': 'Bearer ' + await _token
       };
       var request = http.MultipartRequest(
-          // 'POST', Uri.parse('http://192.168.1.5:8080/api/journal'));
-          // 'POST', Uri.parse('http://10.0.141.1:8080/api/journal'));
-          'POST', Uri.parse('http://pkmsmkteladankertasemaya.com/api/journal'));
+          // 'POST', Uri.parse('http://192.168.191.249:8080/api/journal'));
+      'POST', Uri.parse('http://pkmsmkteladankertasemaya.com/api/journal'));
 
       request.headers.addAll(headres);
       request.fields['list_jurnals'] = listjournal;
@@ -83,7 +84,12 @@ class _UploadJournalState extends State<UploadJournal> {
                   child: const Text('OK'),
                   onPressed: () {
                     //
-                    Navigator.of(context, rootNavigator: false).pop();
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(
+                            builder: (context) => Navigation()))
+                        .then((value) {
+                      setState(() {});
+                    });
                   },
                 ),
               ],

@@ -62,8 +62,7 @@ class _AttendanceState extends State<Attendance> {
 
     var response = await Http.post(
         Uri.parse("http://pkmsmkteladankertasemaya.com/api/save-presensi"),
-        // Uri.parse("http://10.0.141.1:8080/api/save-presensi"),
-        // Uri.parse("http://192.168.1.5:8080/api/save-presensi"),
+        // Uri.parse("http://192.168.191.249:8080/api/save-presensi"),
         body: body,
         headers: headers);
 

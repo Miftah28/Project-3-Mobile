@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:project3mobile/view/journal/uploadjournal.dart';
 import 'package:project3mobile/view/model/getJournal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,8 +39,7 @@ class _JurnalState extends State<Jurnal> {
 
     var response = await Http.get(
         Uri.parse('http://pkmsmkteladankertasemaya.com/api/journal'),
-        // Uri.parse('http://10.0.141.1:8080/api/journal'),
-        // Uri.parse('http://192.168.1.5:8080/api/journal'),
+        // Uri.parse('http://192.168.191.249:8080/api/journal'),
         headers: headres);
 
     journal = GetJournal.fromJson(json.decode(response.body));
@@ -95,7 +95,7 @@ class _JurnalState extends State<Jurnal> {
                         itemCount: journals.length,
                         itemBuilder: (context, index) => Card(
                           child: ListTile(
-                            leading: Text(journals[index].tanggal),
+                            leading: Text(DateFormat('dd-MM-yyyy').format(DateTime.parse(journals[index].tanggal))),
                             title: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
