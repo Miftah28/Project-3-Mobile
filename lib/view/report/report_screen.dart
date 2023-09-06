@@ -38,8 +38,8 @@ class _ReportScreenState extends State<ReportScreen> {
     };
 
     var response =
-        await Http.get(Uri.parse('http://pkmsmkteladankertasemaya.com/api/report'),
-        // await Http.get(Uri.parse('http://192.168.191.249:8080/api/report'),
+        // await Http.get(Uri.parse('http://pkmsmkteladankertasemaya.com/api/report'),
+        await Http.get(Uri.parse('http://192.168.17.10:8080/api/report'),
             headers: headres);
 
     reports = GetReport.fromJson(json.decode(response.body));

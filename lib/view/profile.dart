@@ -33,8 +33,8 @@ class _ProfileState extends State<Profile> {
       'Authorization': 'Bearer ' + (await _token)
     };
     final response = await Http.get(
-      Uri.parse('http://pkmsmkteladankertasemaya.com/api/profile'),
-      // Uri.parse('http://192.168.191.249:8080/api/profile'),
+      // Uri.parse('http://pkmsmkteladankertasemaya.com/api/profile'),
+      Uri.parse('http://192.168.17.10:8080/api/profile'),
       headers: headers,
     );
     profile = GetProfile.fromJson(json.decode(response.body));
@@ -78,8 +78,8 @@ class _ProfileState extends State<Profile> {
                         CircleAvatar(
                           radius: 70,
                           backgroundImage: NetworkImage(
-                            // "http://192.168.191.249:8080/storage/${profiles[index].photo}",
-                            "http://pkmsmkteladankertasemaya.com/storage/${profiles[index].photo}",
+                            "http://192.168.17.10:8080/storage/${profiles[index].photo}",
+                            // "http://pkmsmkteladankertasemaya.com/storage/${profiles[index].photo}",
                           ),
                         ),
                         const SizedBox(

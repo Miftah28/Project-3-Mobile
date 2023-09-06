@@ -59,8 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
     try {
       var response = await myHttp.post(
-        // Uri.parse('http://192.168.191.249:8080/api/login'),
-        Uri.parse('http://pkmsmkteladankertasemaya.com/api/login'),
+        Uri.parse('http://192.168.17.10:8080/api/login'),
+        // Uri.parse('http://pkmsmkteladankertasemaya.com/api/login'),
         body: json.encode(body),
         headers: headers,
       );
@@ -104,6 +104,29 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(5),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade200,
+                  offset: const Offset(2, 4),
+                  blurRadius: 5,
+                  spreadRadius: 2,
+                ),
+              ],
+              gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.orange,
+                  Colors.red,
+                ],
+              ),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

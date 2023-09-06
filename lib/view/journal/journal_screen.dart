@@ -38,8 +38,8 @@ class _JurnalState extends State<Jurnal> {
     };
 
     var response = await Http.get(
-        Uri.parse('http://pkmsmkteladankertasemaya.com/api/journal'),
-        // Uri.parse('http://192.168.191.249:8080/api/journal'),
+        // Uri.parse('http://pkmsmkteladankertasemaya.com/api/journal'),
+        Uri.parse('http://192.168.17.10:8080/api/journal'),
         headers: headres);
 
     journal = GetJournal.fromJson(json.decode(response.body));

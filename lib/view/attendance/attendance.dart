@@ -61,8 +61,8 @@ class _AttendanceState extends State<Attendance> {
     Map<String, String> headers = {'Authorization': 'Bearer ' + await _token};
 
     var response = await Http.post(
-        Uri.parse("http://pkmsmkteladankertasemaya.com/api/save-presensi"),
-        // Uri.parse("http://192.168.191.249:8080/api/save-presensi"),
+        // Uri.parse("http://pkmsmkteladankertasemaya.com/api/save-presensi"),
+        Uri.parse("http://192.168.17.10:8080/api/save-presensi"),
         body: body,
         headers: headers);
 
