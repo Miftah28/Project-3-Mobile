@@ -55,6 +55,32 @@ class _ProfileState extends State<Profile> {
     }
   }
 
+  Future<void> _showLogoutConfirmationDialog(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Konfirmasi Logout'),
+          content: Text('Apakah Anda yakin ingin keluar dari Aplikasi ?'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Batal'),
+              onPressed: () {
+                Navigator.of(context).pop(); // Tutup dialog
+              },
+            ),
+            TextButton(
+              child: Text('Keluar'),
+              onPressed: () {
+                _logout(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,7 +204,7 @@ class _ProfileState extends State<Profile> {
                         ElevatedButton(
                           child: const Text('Logout'),
                           onPressed: () {
-                            _logout(context);
+                            _showLogoutConfirmationDialog(context);
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.red,
