@@ -157,7 +157,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                         return AlertDialog(
                                           title: Text("Konfirmasi Hapus"),
                                           content: Text(
-                                              "Apakah Anda yakin ingin menghapus jurnal ini?"),
+                                              "Apakah Anda yakin ingin menghapus laporan ini?"),
                                           actions: [
                                             TextButton(
                                               onPressed: () {
