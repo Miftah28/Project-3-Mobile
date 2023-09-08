@@ -144,11 +144,32 @@ class _JurnalState extends State<Jurnal> {
                               //     ],
                               //   ),
                               // ),
+
+                              if(journals[index].validationJurnal ==
+                                  'terima')
                               Text(
                                 journals[index].validationJurnal,
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.greenAccent,
+                                ),
+                              ),
+                              if(journals[index].validationJurnal ==
+                                  'proses')
+                              Text(
+                                journals[index].validationJurnal,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.yellow  ,
+                                ),
+                              ),
+                              if(journals[index].validationJurnal ==
+                                  'tolak')
+                              Text(
+                                journals[index].validationJurnal,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.redAccent,
                                 ),
                               ),
                               if (journals[index].validationJurnal ==
