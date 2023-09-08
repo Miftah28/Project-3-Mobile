@@ -6,6 +6,7 @@ import 'package:project3mobile/view/report/uploadreport.dart';
 import 'package:project3mobile/view/model/getReport.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as Http;
+import 'package:project3mobile/view/navigator.dart';
 
 class ReportScreen extends StatefulWidget {
   const ReportScreen({Key? key}) : super(key: key);
@@ -46,6 +47,39 @@ class _ReportScreenState extends State<ReportScreen> {
     reports!.data.forEach((element) {
       report.add(element);
     });
+  }
+
+  Future<void> _deleteReport(int reportId) async {
+    final Map<String, String> headers = {
+      'Authorization': 'Bearer ' + await _token
+    };
+
+    try {
+      final response = await Http.delete(
+        Uri.parse('http://192.168.17.10:8080/api/report/$reportId'),
+        headers: headers,
+      );
+
+      if (response.statusCode == 200) {
+        // Jurnal berhasil dihapus dari server
+        // Anda dapat memperbarui daftar jurnal atau memberikan umpan balik kepada pengguna di sini.
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Data Berhasil dihapus')));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => Navigation()))
+            .then((value) {
+          setState(() {});
+        });
+      } else {
+        // Gagal menghapus jurnal
+        // Tindakan yang sesuai seperti menampilkan pesan kesalahan.
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Data Gagal dihapus')));
+      }
+    } catch (e) {
+      // Tangani kesalahan yang mungkin terjadi selama permintaan HTTP.
+      print('Error: $e');
+    }
   }
 
   @override
@@ -93,20 +127,61 @@ class _ReportScreenState extends State<ReportScreen> {
                         itemCount: report.length,
                         itemBuilder: (context, index) => Card(
                           child: ListTile(
-                            leading: Text(DateFormat('dd-MM-yyyy').format(DateTime.parse(report[index].tanggal))),
+                            leading: Text(DateFormat('dd-MM-yyyy')
+                                .format(DateTime.parse(report[index].tanggal))),
                             title: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      children: [
-                                        Text(report[index].description,
-                                            style: TextStyle(fontSize: 18))
-                                      ],
-                                    ),
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      Text(report[index].description,
+                                          style: TextStyle(fontSize: 18)),
+                                    ],
                                   ),
-                                ]),
+                                ),
+                                IconButton(
+                                  icon: Icon(Icons.edit), // Icon untuk edit
+                                  onPressed: () {
+                                    // Tambahkan logika untuk mengedit item di sini
+                                    // Anda dapat menampilkan dialog atau halaman edit.
+                                  },
+                                  color: Colors.yellow,
+                                ),
+                                IconButton(
+                                  icon: Icon(Icons.delete),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: Text("Konfirmasi Hapus"),
+                                          content: Text(
+                                              "Apakah Anda yakin ingin menghapus jurnal ini?"),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text("Batal"),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                // Panggil fungsi _deleteJournal dengan ID jurnal yang akan dihapus
+                                                _deleteReport(report[index].id);
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text("Hapus"),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  },
+                                  color: Colors.red,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

@@ -133,32 +133,16 @@ class _AttendanceState extends State<Attendance> {
                     SizedBox(
                       height: 20,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            savePresensi(currentLocation.latitude,
-                                currentLocation.longitude);
-                          },
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.green),
-                          ),
-                          child: Text("Masuk"),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            savePresensi(currentLocation.latitude,
-                                currentLocation.longitude);
-                          },
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.red),
-                          ),
-                          child: Text("Pulang"),
-                        )
-                      ],
+                    ElevatedButton(
+                      onPressed: () {
+                        savePresensi(currentLocation.latitude,
+                            currentLocation.longitude);
+                      },
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.green),
+                      ),
+                      child: Text("Absensi"),
                     ),
                   ],
                 ),

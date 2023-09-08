@@ -45,6 +45,7 @@ dependencies:
   intl: ^0.18.1
   font_awesome_flutter: ^10.4.0
   location: ^4.4.0
+  
 
 dev_dependencies:
   flutter_test:
